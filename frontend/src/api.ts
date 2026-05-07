@@ -2,7 +2,7 @@ import axios from "axios";
 import type { TagNode, TreeRecord } from "./types";
 
 // Read from .env — Vite exposes variables prefixed with VITE_
-const BASE = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+const BASE = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "/api" : "http://localhost:8000");
 
 // Fetch all saved trees from the backend
 export async function fetchTrees(): Promise<TreeRecord[]> {
